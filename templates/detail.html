@@ -1,0 +1,30 @@
+{% extends 'index.html' %} {%block title%}
+<div>
+  <h3>News</h3>
+  {%if isPopular %}
+  <div>
+    <span>Order by: </span>
+    <strong>Popular | </strong>
+    <a href="/?order_by=new">New</a>
+  </div>
+  {%else%}
+  <div>
+    <span>Order by: </span>
+    <a href="/?order_by=popular">Popular</a>
+    <strong> | New</strong>
+  </div>
+  {%endif%}
+</div>
+{%endblock%} {% block content %} {%for hit in data.hits %}
+<div>
+  <a href="/{{hit.objectID|safe}}">
+    <h3>{{hit.title|safe}}</h3>
+  </a>
+  <a href="{{hit.url|safe}}">({{hit.url|safe}})</a>
+  <div>
+    {{hit.points|safe}} points | By: {{hit.author|safe}} |
+    {{hit.num_comments|safe}} comments
+  </div>
+</div>
+<hr />
+{% endfor %} {% endblock %}

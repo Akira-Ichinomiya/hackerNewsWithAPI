@@ -1,0 +1,21 @@
+{%extends "index.html"%} {%block title%}
+<header>
+  <div>
+    <h1>{{data.title}}</h1>
+    <div>
+      <span>{{data.points|safe}} points | By {{author|safe}} | </span>
+      <a href="{{data.url}}">{{data.url|safe}}</a>
+    </div>
+  </div>
+</header>
+{%endblock%} {%block content%} {% for child in data.children %}
+<div>
+  {% if child.text == None %}
+  <span>[deleted]</span>
+  {% else %}
+  <h4>{{child.author}}</h4>
+  <div>{{child.text|safe}}</div>
+  {% endif %}
+</div>
+<hr />
+{% endfor %} {%endblock%}
