@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+    <title>레딧 리더</title>
+</head>
+<body>
+    <header>
+        <h1>레딧 리더</h1>
+        <span>아래의 리스트에 있는 항목 중 원하는 카테고리를 선택하세요!</span>
+    </header>
+    <form action="/read">
+        <ul>
+        {% for param in subreddits%}
+            <li>
+                <label><input type="checkbox" name={{param}} id={{param}}>r/{{param}}</label>
+            </li>    
+        {% endfor %}
+        <button type="submit">Aggregate</button>
+        </ul>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+    <title>레딧 리더</title>
+</head>
+<body>
+    <header>
+        <a href="/"><h1>레딧 리더</h1></a>
+        <div>
+            <h3>
+            <span>읽어들인 목록: </span>
+        {% for data in db_list %}
+            <span>r/{{data|safe}} </span>
+        {% endfor %}
+        </div>
+            </h3>
+    </header>
+
+    <div>
+        {% for posting in meta %}
+            <div>
+                <div><h3><a href="https://www.reddit.com{{posting['url']}}">{{posting["title"]|safe}}</a></h3></div>
+                <div>        
+                    {% if posting["upvote"] >= 1000 %}
+                    <span>About </span>
+                    {% endif %}
+                    <span>{{posting["upvote"]|safe}} upvotes · {{posting["tag"]|safe}}</span>
+                </div>
+            </div>
+            <hr/>
+        {% endfor %}
+    </div>
+</body>
+</html>
